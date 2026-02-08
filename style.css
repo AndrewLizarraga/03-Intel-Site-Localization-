@@ -84,6 +84,10 @@ h3 {
     letter-spacing: 0.1px;
 }
 
+.timeline-card img{
+  width: auto;
+}
+
 /* Link styling - Intel blue with hover effect */
 a {
     color: #0068B5;
@@ -98,7 +102,16 @@ a:hover {
 }
 
 /* Container for timeline cards */
-.container {
+.timeline-wrapper {
+    /* Place arrows and scroll area on one line */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Match the container padding for a clean edge */
+    padding: 20px 40px;
+}
+
+.timeline-container {
     /* Display cards in a row */
     display: flex;
     /* Keep cards in one row, don't wrap */
@@ -106,7 +119,7 @@ a:hover {
     /* Space between cards */
     gap: 20px;
     /* Padding creates space on sides */
-    padding: 20px 40px;
+    padding: 20px 10px;
     /* Enable horizontal scrolling */
     overflow-x: auto;
     /* Hide vertical scrollbar */
@@ -120,10 +133,54 @@ a:hover {
     max-width: 1300px;
     /* Center the container */
     margin: 0 auto;
+    /* Let the container grow between arrows */
+    flex: 1 1 auto;
+    /* Hide the default scrollbar */
+    scrollbar-width: none;
+}
+
+/* Hide the scrollbar in WebKit browsers */
+.timeline-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Arrow buttons for scrolling */
+.scroll-button {
+    width: 44px;
+    height: 44px;
+    border-radius: 45%;
+    border: 2px solid #0054a6;
+    background-color: white;
+    color: #0054a6;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Keep the button size stable */
+    flex: 0 0 auto;
+}
+
+/* Hover and focus effects */
+.scroll-button:hover,
+.scroll-button:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* Slightly larger click area on small screens */
+@media (max-width: 600px) {
+    .scroll-button {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 /* Timeline card styling */
-.card {
+.timeline-card {
     position: relative;
     width: 300px;
     height: 300px;
@@ -146,12 +203,12 @@ a:hover {
 }
 
 /* Add more shadow on hover for pop effect */
-.card:hover {
+.timeline-card:hover {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
-/* Card image styling */
-.card img {
+/* Timeline card image styling */
+.timeline-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -161,15 +218,15 @@ a:hover {
 }
 
 /* Parallax effect - image moves when card is hovered */
-.card:hover img {
+.timeline-card:hover img {
     /* Image zooms and shifts slightly for parallax illusion */
     transform: scale(1.05) translateX(-10px);
 }
 
-/* Card text overlay styling */
-.card-text {
+/* Timeline card text overlay styling */
+.timeline-card-text {
     position: absolute;
-    bottom: 0;
+    bottom: 30%;
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -180,25 +237,25 @@ a:hover {
 }
 
 /* Show text on hover */
-.card:hover .card-text,
-.card:focus .card-text {
+.timeline-card:hover .timeline-card-text,
+.timeline-card:focus .timeline-card-text {
     transform: translateY(0);
 }
 
-/* Card text headings and paragraphs */
-.card h2 {
+/* Timeline card text headings and paragraphs */
+.timeline-card h2 {
     color: white;
     margin: 0 0 10px 0;
     font-size: 24px;
 }
 
-.card h3 {
+.timeline-card h3 {
     color: white;
     margin: 0 0 10px 0;
     font-size: 18px;
 }
 
-.card p {
+.timeline-card p {
     margin: 0;
     font-size: 14px;
     line-height: 1.4;
@@ -215,8 +272,8 @@ a:hover {
 
 /* Media query for mobile devices (max-width: 768px) */
 @media (max-width: 768px) {
-    /* Convert container to vertical layout */
-    .container {
+    /* Convert timeline container to vertical layout */
+    .timeline-container {
         /* Stack cards vertically */
         flex-direction: column;
         /* Allow vertical scrolling */
@@ -234,7 +291,7 @@ a:hover {
     }
 
     /* Adjust card size for mobile */
-    .card {
+    .timeline-card {
         width: 100%;
         height: 250px;
         margin-bottom: 20px;
@@ -244,7 +301,7 @@ a:hover {
     }
 
     /* Card image fills container without distortion */
-    .card img {
+    .timeline-card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -273,4 +330,50 @@ a:hover {
     header img {
         width: 100px;
     }
+}
+
+/* New section for the three-column layout */
+.info-section {
+  /* Light background to separate the section */
+  background-color: #f7f7f7;
+  /* Space above and below the section */
+  padding: 40px 20px;
+}
+
+/* Individual column card spacing */
+.info-card {
+  /* Add space between columns on small screens */
+  margin-bottom: 20px;
+}
+
+/* Heading style inside info cards */
+.info-title {
+  /* Align icon and text neatly */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Simple color for readability */
+  color: #1a1a1a;
+}
+
+/* Style for the "Learn More" links */
+.learn-more {
+  /* Make it look like a simple button */
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  background-color: #0068B5;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+/* Hover effect for the link */
+.learn-more:hover {
+  background-color: #0054a6;
+}
+
+/* Add a little space after icons in headings */
+h2 i {
+  margin-right: 8px;
 }
