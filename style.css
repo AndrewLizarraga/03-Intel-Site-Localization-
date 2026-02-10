@@ -21,10 +21,20 @@ body {
 /* Header section with Intel blue gradient background */
 header {
     /* Intel blue gradient background */
-    background: linear-gradient(135deg, #0071c5 0%, #0054a6 100%);
+    background: linear-gradient(135deg, #0071c5 0%, #135394 100%);
     padding: 60px 20px;
     text-align: center;
     color: white;
+}
+
+/* Add spacing so sections do not feel cramped */
+.content-section {
+    padding: 48px 0;
+}
+
+/* Subtle divider between stacked sections */
+.content-section + .content-section {
+    border-top: 1px solid #e6e6e6;
 }
 
 /* Container inside header for content */
@@ -52,6 +62,9 @@ h1 {
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.5px;
+    /* Simple underline to make the heading stand out */
+    padding-bottom: 8px;
+    border-bottom: 4px solid rgba(255, 255, 255, 0.7);
 }
 
 /* Subheading paragraph styling */
@@ -330,6 +343,18 @@ a:hover {
     header img {
         width: 100px;
     }
+
+    /* Keep timeline text visible on small screens */
+    .timeline-card-text {
+        bottom: 0;
+        transform: translateY(0);
+        padding: 16px;
+    }
+
+    .timeline-card:hover .timeline-card-text,
+    .timeline-card:focus .timeline-card-text {
+        transform: translateY(0);
+    }
 }
 
 /* New section for the three-column layout */
@@ -376,4 +401,35 @@ a:hover {
 /* Add a little space after icons in headings */
 h2 i {
   margin-right: 8px;
+}
+
+/* Footer link list styling */
+.footer-links {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+}
+
+.footer-links a {
+    color: #003a66;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+    color: #00284d;
+    text-decoration-thickness: 3px;
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+        gap: 6px;
+    }
 }

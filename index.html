@@ -1,19 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="auto">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intel: Sustainability Through the Ages</title>
   <link rel="stylesheet" href="style.css" />
   <!-- Bootstrap CSS (for the grid system) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link id="bootstrap-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link id="bootstrap-rtl" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" disabled>
   <!-- Bootstrap Icons (for simple icons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script>
+    const rtlLangs = ['ar', 'he', 'fa', 'ur'];
+    const lang = (document.documentElement.lang || '').toLowerCase();
+    const isRtl = rtlLangs.some((rtl) => lang.startsWith(rtl));
+    if (isRtl) {
+      document.documentElement.setAttribute('dir', 'rtl');
+      document.getElementById('bootstrap-css').setAttribute('disabled', '');
+      document.getElementById('bootstrap-rtl').removeAttribute('disabled');
+    }
+  </script>
 </head>
 <body>
 
+  <!-- Bootstrap Navbar -->
+  <nav class="navbar navbar-expand-md bg-light border-bottom">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Intel</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#timeline-section">Timeline</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#learn-more">Learn More</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <!-- Header / Hero Section -->
-  <header>
+  <header id="home">
     <div>
       <img src="img/intel-header-logo.svg" alt="Intel Logo" />
       <!-- Main Heading -->
@@ -30,10 +72,11 @@
     </div>
   </header>
 
+  <main>
   <!-- Timeline Cards Section -->
-  <section>
+  <section class="bg-light content-section" id="timeline-section">
     <!-- Wrapper holds arrows + scroll area -->
-    <div class="timeline-wrapper">
+    <div class="timeline-wrapper ">
       <!-- Scroll left button -->
       <button class="scroll-button scroll-left" aria-label="Scroll timeline left">
         <i class="bi bi-arrow-left" aria-hidden="true"></i>
@@ -98,7 +141,7 @@
 
       <!-- Card 5: 2006 -->
       <div class="timeline-card" tabindex="0">
-        <img src="img/5.png" alt="Peak GHG Emissions in 2006" />
+        <img src="img/5.jpg" alt="Peak GHG Emissions in 2006" />
         <div class="timeline-card-text">
           <h2>2006</h2>
           <h3>Peak GHG Emissions</h3>
@@ -113,7 +156,7 @@
 
       <!-- Card 6: 2020 -->
       <div class="timeline-card" tabindex="0">
-        <img src="https://placehold.co/250x100" alt="RISE Strategy in 2020" />
+        <img src="img/6.jpg" alt="RISE Strategy in 2020" />
         <div class="timeline-card-text">
           <h2>2020</h2>
           <h3>RISE Strategy</h3>
@@ -127,7 +170,7 @@
 
       <!-- Card 7: 2022 -->
       <div class="timeline-card" tabindex="0">
-        <img src="https://placehold.co/250x100" alt="Net-Zero By 2040 in 2022" />
+        <img src="img/7.jpg" alt="Net-Zero By 2040 in 2022" />
         <div class="timeline-card-text">
           <h2>2022</h2>
           <h3>Net-Zero By 2040</h3>
@@ -141,7 +184,7 @@
 
       <!-- Card 8: 2023 -->
       <div class="timeline-card" tabindex="0">
-        <img src="https://placehold.co/250x100" alt="Renewable Electricity in 2023" />
+        <img src="img/8.jpg" alt="Renewable Electricity in 2023" />
         <div class="timeline-card-text">
           <h2>2023</h2>
           <h3>Renewable Electricity</h3>
@@ -155,7 +198,7 @@
 
       <!-- Card 9: 2024 -->
       <div class="timeline-card" tabindex="0">
-        <img src="https://placehold.co/250x100" alt="Sustainability Summit in 2024" />
+        <img src="img/9.jpg" alt="Sustainability Summit in 2024" />
         <div class="timeline-card-text">
           <h2>2024</h2>
           <h3>Sustainability Summit</h3>
@@ -176,64 +219,66 @@
   </section>
 
   <!-- 3-Column Content Section -->
-  <section>
-    <!-- Bootstrap container centers content -->
-    <div class="container">
-      <!-- Bootstrap row creates a flexible row -->
-      <div class="row">
-        
-        <!-- Column 1 -->
-        <div class="col-12 col-md-4">
-          <h2>
-            <!-- Icon for the heading -->
-            <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
-            RISE Strategy
-          </h2>
-          <p>
-            Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, 
-            Intel sets ambitious 2030 goals, including driving industry-wide 
-            progress on climate action, water stewardship, and waste reduction.
-          </p>
-          <!-- Learn More Button -->
-          <a class="learn-more" href="#">Learn More</a>
+  <section class="bg-light content-section" id="learn-more">
+    <section>
+      <!-- Bootstrap container centers content -->
+      <div class="container">
+        <!-- Bootstrap row creates a flexible row -->
+        <div class="row">
+  
+          <!-- Column 1 -->
+          <div class="col-12 col-md-4">
+            <h2>
+              <!-- Icon for the heading -->
+              <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+              RISE Strategy
+            </h2>
+            <p>
+              Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy,
+              Intel sets ambitious 2030 goals, including driving industry-wide
+              progress on climate action, water stewardship, and waste reduction.
+            </p>
+            <!-- Learn More Button -->
+            <a class="learn-more" href="#">Learn More</a>
+          </div>
+  
+          <!-- Column 2 -->
+          <div class="col-12 col-md-4">
+            <h2>
+              <!-- Icon for the heading -->
+              <i class="bi bi-shield-check" aria-hidden="true"></i>
+              Commitment
+            </h2>
+            <p>
+              In 2022, Intel pledged to achieve net-zero greenhouse gas emissions
+              (Scope 1 and 2) by 2040. This commitment builds on decades of
+              environmental initiatives and partnerships across the semiconductor
+              industry.
+            </p>
+            <!-- Learn More Button -->
+            <a class="learn-more" href="#">Learn More</a>
+          </div>
+  
+          <!-- Column 3 -->
+          <div class="col-12 col-md-4">
+            <h2>
+              <!-- Icon for the heading -->
+              <i class="bi bi-droplet-half" aria-hidden="true"></i>
+              Water &amp; Waste
+            </h2>
+            <p>
+              Intel conserves billions of gallons of water annually and
+              collaborates with local communities to restore watersheds.
+              Intel also upcycles and recycles materials to reduce waste and
+              advance a circular economy.
+            </p>
+            <!-- Learn More Button -->
+            <a class="learn-more" href="#">Learn More</a>
+          </div>
+  
         </div>
-
-        <!-- Column 2 -->
-        <div class="col-12 col-md-4">
-          <h2>
-            <!-- Icon for the heading -->
-            <i class="bi bi-shield-check" aria-hidden="true"></i>
-            Commitment
-          </h2>
-          <p>
-            In 2022, Intel pledged to achieve net-zero greenhouse gas emissions 
-            (Scope 1 and 2) by 2040. This commitment builds on decades of 
-            environmental initiatives and partnerships across the semiconductor 
-            industry.
-          </p>
-          <!-- Learn More Button -->
-          <a class="learn-more" href="#">Learn More</a>
-        </div>
-
-        <!-- Column 3 -->
-        <div class="col-12 col-md-4">
-          <h2>
-            <!-- Icon for the heading -->
-            <i class="bi bi-droplet-half" aria-hidden="true"></i>
-            Water &amp; Waste
-          </h2>
-          <p>
-            Intel conserves billions of gallons of water annually and 
-            collaborates with local communities to restore watersheds.
-            Intel also upcycles and recycles materials to reduce waste and 
-            advance a circular economy.
-          </p>
-          <!-- Learn More Button -->
-          <a class="learn-more" href="#">Learn More</a>
-        </div>
-
       </div>
-    </div>
+    </section>
   </section>
 
   <!-- Simple scroll controls for the timeline -->
@@ -258,9 +303,81 @@
   </script>
 
   <!-- Subscription Form -->
-  <section>
-    <h2>Subscribe to our Newsletter</h2>
-    <!-- Add form here -->
+  <section class="py-4 content-section">
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-12 col-md-4"></div>
+        <div class="col-12 col-md-4">
+          <h2>
+            <i class="bi bi-envelope" aria-hidden="true"></i>
+            Subscribe to our Newsletter
+          </h2>
+          <form>
+            <div class="mb-3">
+              <label for="newsletter-email" class="visually-hidden">Email address</label>
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="newsletter-email"
+                  name="email"
+                  placeholder="email@example.com"
+                  autocomplete="email"
+                  required
+                  aria-describedby="newsletter-help"
+                />
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </div>
+              <div id="newsletter-help" class="form-text">
+                Keep up with our efforts towards sustainability.
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 col-md-4"></div>
+      </div>
+    </div>
   </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-light border-top mt-4">
+    <div class="container py-4">
+      <div class="row align-items-start">
+        <!-- Footer text and links -->
+        <div class="col-12 col-md-9">
+          <p class="mb-2">
+            &copy; Intel Corporation
+          </p>
+          <ul class="footer-links mb-2">
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Trademarks</a></li>
+            <li><a href="#">Cookies</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Supply Chain Transparency</a></li>
+            <li><a href="#">Site Map</a></li>
+            <li><a href="#">Recycling</a></li>
+            <li><a href="#">Your Privacy Choices</a></li>
+            <li><a href="#">Notice at Collection</a></li>
+          </ul>
+          <p class="mb-2">
+            Intel technologies may require enabled hardware, software or service activation.
+            // No product or component can be absolutely secure.
+            // Your costs and results may vary.
+            // Performance varies by use, configuration, and other factors.
+            Learn more at intel.com/performanceindex.
+            // See our complete legal Notices and Disclaimers.
+          </p>
+          <p class="mb-0">
+            Intel is committed to respecting human rights and avoiding causing or contributing to adverse impacts on human rights.
+            See Intel's Global Human Rights Principles.
+            Intel's products and software are intended only to be used in applications that do not cause or contribute to adverse impacts on human rights.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
